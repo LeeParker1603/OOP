@@ -1,5 +1,6 @@
 from src.product import Product
 
+
 class Category:
     name: str
     description: str
@@ -16,7 +17,6 @@ class Category:
         Category.product_count += len(products) if products else 0
         Category.category_count += 1
 
-
     @property
     def products(self):
         product_str = ""
@@ -24,13 +24,9 @@ class Category:
             product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return product_str
 
-
     def get_products_list(self):
         return self.__products.copy()
-
 
     def add_product(self, product: Product):
         self.__products.append(product)
         Category.product_count += 1
-
-
