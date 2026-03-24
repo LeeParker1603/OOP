@@ -5,7 +5,9 @@ def test_category_init(first_category, second_category):
         first_category.description
         == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
     )
-    assert len(first_category.products) == 2
+
+    products_list = first_category.get_products_list
+    assert len(products_list) == 2
 
     assert first_category.category_count == 2
     assert second_category.category_count == 2
