@@ -79,3 +79,7 @@ def test_products_property_format_compact(empty_category, products, expected):
         empty_category.add_product(product)
 
     assert empty_category.products == expected
+
+
+def test_category__str__(first_category):
+    assert str(first_category) == "Смартфоны, количество продуктов: 13 шт."

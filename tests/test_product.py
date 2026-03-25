@@ -86,3 +86,20 @@ def test_new_product_with_check_duplicate_lower_price_without_confirm(existing_p
 
     assert result is existing_product
     assert result.price == original_price  # Цена не должна измениться
+
+
+def test_product__str__(product):
+    assert str(product) == "Xiaomi Redmi Note 20, 63000.0 руб. Остаток 4 шт."
+
+
+@pytest.mark.parametrize("price1, qty1, price2, qty2, expected", [
+    (100.0, 10, 200.0, 5, 2000.0),
+    (63000.0, 5, 55000.0, 12, 975000.0),
+])
+def test_product_add(price1, qty1, price2, qty2, expected):
+    # Создаем два экземпляра продукта (замените Product на имя вашего класса)
+    prod1 = Product("Товар 1", "Описание", price1, qty1)
+    prod2 = Product("Товар 2", "Описание", price2, qty2)
+
+    # Проверяем результат сложения
+    assert prod1 + prod2 == expected

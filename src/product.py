@@ -16,8 +16,8 @@ class Product:
 
 
     def __add__(self, other):
-
-        return 0
+        total_cost = self.price * self.quantity + other.price * other.quantity
+        return total_cost
 
 
     @classmethod
