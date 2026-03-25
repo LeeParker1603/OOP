@@ -39,6 +39,10 @@ def test_create_objects_from_json():
     assert categories[0].name == "Холодильники"
 
     # Проверяем, что внутри категории объекты Product, а не словари
-    assert len(categories[0].products) == 1
-    assert isinstance(categories[0].products[0], Product)
-    assert categories[0].products[0].name == "Бирюса"
+    products_list = categories[0].get_products_list()
+    assert len(products_list) == 1
+    assert isinstance(products_list[0], Product)
+    assert products_list[0].name == "Бирюса"
+    assert products_list[0].price == 10000.0
+    assert products_list[0].quantity == 10
+    assert products_list[0].description == "Двухкамерный"

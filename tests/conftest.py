@@ -33,6 +33,12 @@ def second_category():
 
 
 @pytest.fixture
+def empty_category():
+    """Фикстура с пустой категорией"""
+    return Category("Электроника", "Компьютерная техника")
+
+
+@pytest.fixture
 def product():
     """Фикстура продукта"""
     return Product(name="Xiaomi Redmi Note 20", description="1024GB, Красный", price=63000.0, quantity=4)
@@ -57,3 +63,37 @@ def temp_json_file(tmp_path):
         json.dump(data, f)
 
     return file_path
+
+
+@pytest.fixture
+def product_data():
+    """Фикстура с данными в словаре"""
+    return {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 5,
+    }
+
+
+@pytest.fixture
+def existing_product(product_data):
+    """Фикстура с существующим продуктом (созданным из product_data)"""
+    return Product.new_product(product_data)
+
+
+@pytest.fixture
+def duplicate_data():
+    """Фикстура с данными для дубликата"""
+    return {
+        "name": "Samsung Galaxy S23 Ultra",
+        "price": 190000.0,  # Более высокая цена
+        "quantity": 3,
+        "description": "512GB, Черный цвет",
+    }
+
+
+@pytest.fixture
+def new_product_data():
+    """Фикстура с данными для нового продукта"""
+    return {"name": "iPhone 15", "price": 210000.0, "quantity": 8, "description": "Новый iPhone"}
