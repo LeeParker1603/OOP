@@ -1,7 +1,8 @@
+from src.base_action import Action
 from src.product import Product
 
 
-class Category:
+class Category(Action):
     name: str
     description: str
     products: list
@@ -10,8 +11,7 @@ class Category:
     product_count = 0
 
     def __init__(self, name, description, products=None):
-        self.name = name
-        self.description = description
+        super().__init__(name, description)
         self.__products = products if products else []
 
         Category.product_count += len(products) if products else 0

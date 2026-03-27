@@ -20,7 +20,7 @@ E-commerce  — электронная торговля, или электрон
 
 ### Сервисы
 Основные сущности и инициализации объектов.
-Созданы классы ```Product``` и ```Category```
+Созданы классы ```Product```, ```Category``` и ```Order```
 Для классов описаны необходимые атрибуты.
 Для класса Category добавлены два атрибута класса:  
 - **количество категорий ```category_count```**  
@@ -37,7 +37,8 @@ E-commerce  — электронная торговля, или электрон
 - применяются приватные методы, геттеры и сеттеры к ним.
 - Создан абстрактный базовый класс, который является родительским для класса ```Product```
 - Классы ```Smartphone``` и ```LawnGrass``` остаются наследниками класса ```Product```
-- В проекте реализованы классы-миксины и настроены цепочки последовательной инициации классов  
+- В проекте реализованы классы-миксины и настроены цепочки последовательной 
+  инициации классов  
 и правильного множественного наследования.
 
 
@@ -121,11 +122,21 @@ OOP/
 ├── src/
 │   ├── __init__.py
 │   ├── utils.py          # Загрузка данных JSON
+│   ├── base_product.py   # Класс BaseProduct(ABC)
+│   ├── base_action.py    # Класс Action(ABC)
 │   ├── category.py       # Класс Category
+│   ├── order.py          # Класс Order
+│   ├── lawn_grass.py     # Класс LawnGrass
 │   ├── product.py        # Класс Products
+│   ├── smartphone.py     # Класс Smartphone
+│   ├── print_mixin.py    # Класс PrintMixin
 ├── tests/
 │   ├── test_category.py  # Тесты для Category
+│   ├── test_order.py     # Тесты для Order
 │   ├── test_product.py   # Тесты для Products
+│   ├── test_lawn_grass.py  # Тесты для LawnGrass
+│   ├── test_smartphone.py  # Тесты для Smartphone
+│   ├── test_print_mixin.py # Тесты для PrintMixin
 │   ├── test_utils.py     # Тесты для утилит
 │   └── conftest.py       # Общие фикстуры для тестов
 ├── data/                 # Папка для данных
@@ -151,22 +162,23 @@ pytest tests/ -v
 pytest tests/test_services.py::test_cashback_rounding -v
 ```
 
-### 5.3. Проект покрыт модульными (unit) тестами на 96%
+### 5.3. Проект покрыт модульными (unit) тестами на 92%
 
 ```
-Name                Stmts   Miss  Cover
----------------------------------------
-src\__init__.py         0      0   100%
-src\category.py        28      0   100%
-src\lawn_grass.py       7      0   100%
-src\product.py         52      2    96%
-src\smartphone.py       8      0   100%
-src\utils.py           24      2    92%
----------------------------------------
-TOTAL                 119      4    97%
-
-
-
+Name                  Stmts   Miss  Cover
+-----------------------------------------
+src\__init__.py           0      0   100%
+src\base_action.py        9      1    89%
+src\base_product.py       6      1    83%
+src\category.py          29      0   100%
+src\lawn_grass.py         7      0   100%
+src\order.py             47     10    79%
+src\print_mixin.py        5      0   100%
+src\product.py           55      2    96%
+src\smartphone.py         8      0   100%
+src\utils.py             24      2    92%
+-----------------------------------------
+TOTAL                   190     16    92%
 
 ```
 
