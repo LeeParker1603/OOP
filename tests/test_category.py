@@ -73,7 +73,7 @@ def test_products_property_with_products(first_category):
     ],
 )
 def test_products_property_format_compact(empty_category, products, expected):
-    """Компактный параметризованный тест форматирования свойства products"""
+    """Параметризованный тест форматирования свойства products"""
     for name, price, quantity in products:
         product = Product(name, "", price, quantity)
         empty_category.add_product(product)
@@ -83,3 +83,9 @@ def test_products_property_format_compact(empty_category, products, expected):
 
 def test_category__str__(first_category):
     assert str(first_category) == "Смартфоны, количество продуктов: 13 шт."
+
+
+def test_add_product_invalid_type_error_message(empty_category):
+    """Тест: проверка сообщения об ошибке"""
+    with pytest.raises(TypeError):
+        empty_category.add_product("не товар")
