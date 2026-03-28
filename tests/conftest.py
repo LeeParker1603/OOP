@@ -4,6 +4,7 @@ import pytest
 
 from src.category import Category
 from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.smartphone import Smartphone
 
@@ -125,3 +126,8 @@ def lawn_grass_product():
 def lawn_grass_product_2():
     """Фикстура травы газона 2"""
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def order(product):
+    return Order(name="Заказ #1", description="Покупка смартфона", product=product, quantity=2)
