@@ -1,5 +1,6 @@
 import pytest
 
+from src.exceptions import ZeroProductQuantityException
 from src.order import Order
 from src.product import Product
 
@@ -31,7 +32,7 @@ def test_order_invalid_product_types(product, invalid_product):
 
 
 def test_order_negative_quantity(product):
-    with pytest.raises(ValueError, match="Количество должно быть больше нуля"):
+    with pytest.raises(ZeroProductQuantityException, match="Количество должно быть больше нуля"):
         Order("Заказ #1", "Покупка", product=product, quantity=(-2))
 
 

@@ -1,4 +1,5 @@
 from src.base_action import Action
+from src.exceptions import ZeroProductQuantityException
 from src.product import Product
 
 
@@ -12,7 +13,17 @@ class Order(Action):
         if not isinstance(product, Product):
             raise TypeError("В заказе может быть только объект класса Product")
         self._product = product
-        self.quantity = quantity
+        try:
+            if product.quantity == 0:
+                raise ZeroProductQuantityException("Количество продукта " "не должно быть равно 0")
+        except ZeroProductQuantityException as e:
+            print(str(e))
+        else:
+            self.quantity = quantity
+            print("Продукт успешно добавлен")
+        finally:
+            print("Обработка добавления продукта в заказ прошла успешно")
+
         self._total_price = self._calculate_total_price()
 
         Order.order_count += 1
@@ -37,7 +48,7 @@ class Order(Action):
     def quantity(self, value: int):
         """Сеттер для количества (пересчитывает итоговую стоимость)"""
         if value <= 0:
-            raise ValueError("Количество должно быть больше нуля")
+            raise ZeroProductQuantityException("Количество должно быть больше нуля")
         self._quantity = value
         self._total_price = self._calculate_total_price()
 

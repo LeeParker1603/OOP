@@ -89,3 +89,8 @@ def test_add_product_invalid_type_error_message(empty_category):
     """Тест: проверка сообщения об ошибке"""
     with pytest.raises(TypeError):
         empty_category.add_product("не товар")
+
+
+def test_middle_price(first_category, empty_category):
+    assert first_category.middle_price() == 195000.0
+    assert empty_category.middle_price() == 0
