@@ -125,6 +125,7 @@ OOP/
 │   ├── base_product.py   # Класс BaseProduct(ABC)
 │   ├── base_action.py    # Класс Action(ABC)
 │   ├── category.py       # Класс Category
+│   ├── exceptions.py     # Класс ZeroProductQuantityException
 │   ├── order.py          # Класс Order
 │   ├── lawn_grass.py     # Класс LawnGrass
 │   ├── product.py        # Класс Products
@@ -170,15 +171,17 @@ Name                  Stmts   Miss  Cover
 src\__init__.py           0      0   100%
 src\base_action.py        9      1    89%
 src\base_product.py       6      1    83%
-src\category.py          29      0   100%
+src\category.py          43      3    93%
+src\exceptions.py         3      0   100%
 src\lawn_grass.py         7      0   100%
-src\order.py             47     10    79%
+src\order.py             55     13    76%
 src\print_mixin.py        5      0   100%
-src\product.py           55      2    96%
+src\product.py           57      3    95%
 src\smartphone.py         8      0   100%
 src\utils.py             24      2    92%
 -----------------------------------------
-TOTAL                   190     16    92%
+TOTAL                   217     23    89%
+
 
 ```
 
